@@ -147,10 +147,14 @@ struct DateRangeFilterView: View {
     @Binding var dateRange: DateRange
     @Environment(\.dismiss) private var dismiss
     
+    private var nonCustomDateRanges: [DateRange] {
+        [.all, .last7Days, .thisMonth]
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(DateRange.allCases.filter { $0 != .custom }, id: \.id) { range in
+                ForEach(nonCustomDateRanges, id: \.id) { range in
                     Button(range.displayName) {
                         dateRange = range
                         dismiss()

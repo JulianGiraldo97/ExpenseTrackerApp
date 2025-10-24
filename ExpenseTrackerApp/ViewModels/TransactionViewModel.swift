@@ -17,7 +17,7 @@ class TransactionViewModel: ObservableObject {
     @Published var dateRange: DateRange = .all
     @Published var searchText: String = ""
     
-    private let viewContext: NSManagedObjectContext
+    let viewContext: NSManagedObjectContext
     
     init(context: NSManagedObjectContext) {
         self.viewContext = context
