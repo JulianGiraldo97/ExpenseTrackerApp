@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import SwiftUI
+import Combine
 
 // MARK: - Transaction ViewModel
 @MainActor
@@ -156,6 +157,10 @@ enum DateRange: CaseIterable, Identifiable {
     case last7Days
     case thisMonth
     case custom(Date, Date)
+    
+    static var allCases: [DateRange] {
+        return [.all, .last7Days, .thisMonth]
+    }
     
     var id: String {
         switch self {

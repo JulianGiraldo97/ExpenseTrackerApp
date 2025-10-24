@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TransactionRow: View {
     let transaction: Transaction

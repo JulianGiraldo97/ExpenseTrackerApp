@@ -16,6 +16,15 @@ struct FilterBar: View {
     @State private var showingCategoryFilter = false
     @State private var showingDateFilter = false
     
+    private func isDateRangeAll(_ range: DateRange) -> Bool {
+        switch range {
+        case .all:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var body: some View {
         VStack(spacing: 12) {
             // Search Bar
@@ -54,13 +63,13 @@ struct FilterBar: View {
                     FilterButton(
                         title: dateRange.displayName,
                         icon: "calendar",
-                        isActive: dateRange != .all
+                        isActive: !isDateRangeAll(dateRange)
                     ) {
                         showingDateFilter = true
                     }
                     
                     // Clear Filters
-                    if selectedCategory != nil || dateRange != .all || !searchText.isEmpty {
+                    if selectedCategory != nil || !isDateRangeAll(dateRange) || !searchText.isEmpty {
                         FilterButton(
                             title: "Clear",
                             icon: "xmark.circle",
