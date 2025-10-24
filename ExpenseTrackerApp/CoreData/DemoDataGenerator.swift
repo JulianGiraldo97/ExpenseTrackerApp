@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreData
+internal import CoreData
 
 struct DemoDataGenerator {
     static func generateDemoData(context: NSManagedObjectContext) {

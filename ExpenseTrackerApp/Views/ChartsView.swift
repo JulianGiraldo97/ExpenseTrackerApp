@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+internal import CoreData
 
 struct ChartsView: View {
     @EnvironmentObject private var transactionViewModel: TransactionViewModel
@@ -162,14 +163,14 @@ struct SummaryCardsView: View {
     var body: some View {
         VStack(spacing: 12) {
             HStack(spacing: 12) {
-                SummaryCard(
+                MetricCard(
                     title: "Total Spending",
                     value: transactionViewModel.totalSpending,
                     icon: "dollarsign.circle.fill",
                     color: .red
                 )
                 
-                SummaryCard(
+                MetricCard(
                     title: "Transactions",
                     value: Double(transactionViewModel.transactions.count),
                     icon: "list.bullet.circle.fill",
@@ -179,14 +180,14 @@ struct SummaryCardsView: View {
             
             if !transactionViewModel.transactions.isEmpty {
                 HStack(spacing: 12) {
-                    SummaryCard(
+                    MetricCard(
                         title: "Average",
                         value: transactionViewModel.totalSpending / Double(transactionViewModel.transactions.count),
                         icon: "chart.line.uptrend.xyaxis.circle.fill",
                         color: .green
                     )
                     
-                    SummaryCard(
+                    MetricCard(
                         title: "Categories",
                         value: Double(transactionViewModel.spendingByCategory.count),
                         icon: "tag.circle.fill",
@@ -199,7 +200,7 @@ struct SummaryCardsView: View {
     }
 }
 
-struct SummaryCard: View {
+struct MetricCard: View {
     let title: String
     let value: Double
     let icon: String

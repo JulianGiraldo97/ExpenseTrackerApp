@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreData
+internal import CoreData
 
 // MARK: - Transaction Categories
 enum TransactionCategory: String, CaseIterable, Identifiable {

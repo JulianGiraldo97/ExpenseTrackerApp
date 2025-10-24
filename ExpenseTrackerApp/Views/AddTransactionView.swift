@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+internal import CoreData
 
 struct AddTransactionView: View {
     @EnvironmentObject private var transactionViewModel: TransactionViewModel
